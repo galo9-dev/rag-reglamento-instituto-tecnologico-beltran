@@ -1,4 +1,4 @@
-# Consultor del Reglamento — ISFT Instituto Tecnológico Beltrán
+# Consultor del Reglamento — Instituto Tecnológico Beltrán
 
 Proyecto personal para facilitar el acceso al reglamento académico del instituto. 
 En vez de leer el PDF completo, los alumnos pueden hacer preguntas en lenguaje natural y obtener respuestas basadas en el documento oficial.

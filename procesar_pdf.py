@@ -1,3 +1,5 @@
+#Instituto Tecnologico Beltran
+
 import fitz
 
 def cargar_pdf(ruta):

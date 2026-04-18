@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultor del Reglamento</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; }
+        h1 { margin-bottom: 8px; }
+        p.subtitulo { color: #666; margin-bottom: 24px; }
+        #chat { border: 1px solid #ddd; border-radius: 8px; padding: 16px; min-height: 300px; margin-bottom: 16px; overflow-y: auto; }
+        .mensaje { margin-bottom: 12px; }
+        .mensaje.usuario { text-align: right; }
+        .burbuja { display: inline-block; padding: 10px 14px; border-radius: 8px; max-width: 80%; text-align: left; }
+        .usuario .burbuja { background: #0070f3; color: white; }
+        .asistente .burbuja { background: #f1f1f1; color: #333; }
+        #form { display: flex; gap: 8px; }
+        #input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; }
+        #boton { padding: 10px 20px; background: #0070f3; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 15px; }
+        #boton:disabled { background: #aaa; }
+    </style>
+</head>
+<body>
+    <h1>📋 Consultor del Reglamento</h1>
+    <p class="subtitulo">Instituto Tecnológico Beltrán — Hacé tu pregunta sobre el reglamento académico</p>
+    <div id="chat"></div>
+    <div id="form">
+        <input id="input" type="text" placeholder="¿Qué querés saber del reglamento?" />
+        <button id="boton" onclick="preguntar()">Enviar</button>
+    </div>
+
+    <script>
+        async function preguntar() {
+            const input = document.getElementById("input");
+            const boton = document.getElementById("boton");
+            const chat = document.getElementById("chat");
+            const texto = input.value.trim();
+            if (!texto) return;
+
+            agregarMensaje(texto, "usuario");
+            input.value = "";
+            boton.disabled = true;
+            boton.textContent = "Buscando...";
+
+            try {
+                const res = await fetch("http://127.0.0.1:8000/preguntar", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ texto })
+                });
+                const data = await res.json();
+                agregarMensaje(data.respuesta, "asistente");
+            } catch {
+                agregarMensaje("Error al conectar con el servidor.", "asistente");
+            }
+
+            boton.disabled = false;
+            boton.textContent = "Enviar";
+        }
+
+        function agregarMensaje(texto, tipo) {
+            const chat = document.getElementById("chat");
+            const div = document.createElement("div");
+            div.className = `mensaje ${tipo}`;
+            div.innerHTML = `<span class="burbuja">${texto}</span>`;
+            chat.appendChild(div);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        document.getElementById("input").addEventListener("keydown", e => {
+            if (e.key === "Enter") preguntar();
+        });
+    </script>
+</body>
+</html>

@@ -1,3 +1,7 @@
+## Demo en vivo
+
+https://rag-reglamento-instituto-tecnologico-beltran-sr7zxwbhtg9q6d6zy.streamlit.app
+
 # Consultor del Reglamento — Instituto Tecnológico Beltrán
 
 Proyecto personal para facilitar el acceso al reglamento académico del instituto. 

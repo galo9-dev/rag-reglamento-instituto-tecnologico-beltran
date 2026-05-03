@@ -1,27 +1,36 @@
-## Demo en vivo
+# 📋 Consultor RAG — Reglamento ISFT N° 197
 
-https://rag-reglamento-instituto-tecnologico-beltran-sr7zxwbhtg9q6d6zy.streamlit.app
+> Sistema de Q&A con inteligencia artificial sobre el reglamento académico del instituto,
+> construido con arquitectura RAG (Retrieval-Augmented Generation) de producción.
 
-# Consultor del Reglamento — Instituto Tecnológico Beltrán
+**[🚀 Demo en vivo](https://rag-reglamento-instituto-tecnologico-beltran-sr7zxwbhtg9q6d6zy.streamlit.app)**
 
-Proyecto personal para facilitar el acceso al reglamento académico del instituto. 
-En vez de leer el PDF completo, los alumnos pueden hacer preguntas en lenguaje natural y obtener respuestas basadas en el documento oficial.
+## 🏗️ Arquitectura
 
-## Cómo funciona
+[diagrama ASCII o imagen]
 
-El sistema usa RAG (Retrieval-Augmented Generation): divide el reglamento en fragmentos, 
-los convierte en vectores semánticos con sentence-transformers, y cuando alguien hace una 
-pregunta busca los fragmentos más relevantes con FAISS y se los pasa a LLaMA 3 (via Groq) 
-para generar la respuesta.
+Usuario → Pregunta → Embedding (MiniLM) → FAISS (coseno) → Top-K chunks
+→ LLaMA 3.3 70B (Groq) → Respuesta con fuentes citadas
 
-## Tecnologías
+## ⚡ Decisiones técnicas
 
-- Python, PyMuPDF, sentence-transformers, FAISS, Groq API, Streamlit
+| Componente | Elección | Por qué |
+|---|---|---|
+| Embeddings | all-MiniLM-L6-v2 | Balance velocidad/calidad para español |
+| Vector DB | FAISS IndexFlatIP | Búsqueda coseno exacta, sin overhead |
+| LLM | LLaMA 3.3 70B via Groq | 0 costo, latencia <2s, calidad GPT-3.5+ |
+| Chunking | Semántico por párrafos | Preserva artículos del reglamento completos |
 
-## Instalación
+## 🔍 Features
 
-1. Clonar el repo
-2. Crear entorno virtual e instalar dependencias: `pip install pymupdf sentence-transformers faiss-cpu streamlit groq python-dotenv`
-3. Agregar `reglamento.pdf` en la carpeta `data/`
-4. Crear `.env` con tu `GROQ_API_KEY`
-5. Correr `python embeddings.py` y luego `streamlit run app.py`
+- ✅ Búsqueda semántica con scores de similitud
+- ✅ Fuentes citadas con número de página  
+- ✅ Modo debug para inspeccionar chunks recuperados
+- ✅ Historial de conversación con memoria contextual
+- ✅ Filtro de calidad mínima (descarta chunks irrelevantes)
+
+## 🧠 Mejoras pendientes / roadmap
+
+- [ ] Re-ranking con cross-encoder
+- [ ] Evaluación con RAGAS
+- [ ] Caché de embeddings de preguntas frecuentes

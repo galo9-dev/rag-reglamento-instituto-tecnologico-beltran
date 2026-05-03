@@ -1,65 +1,71 @@
-# Instituto Tecnologico Beltran
+# api.py
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import faiss
-import numpy as np
 import pickle
+import numpy as np
 from sentence_transformers import SentenceTransformer
-from groq import Groq
 from dotenv import load_dotenv
-import os
+from src.retriever import buscar_chunks
+from src.generator import responder
+from src.config import FAISS_INDEX_PATH, CHUNKS_PATH, EMBEDDING_MODEL
 
 load_dotenv()
 
-app = FastAPI()
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
+app = FastAPI(
+    title="RAG Reglamento ISFT 197",
+    description="API para consultar el reglamento académico del ISFT N° 197",
+    version="1.0.0"
 )
 
-print("Cargando sistema...")
-indice = faiss.read_index("data/indice.faiss")
-with open("data/chunks.pkl", "rb") as f:
+# ── CARGA DEL SISTEMA ────────────────────────────────────────────
+indice = faiss.read_index(str(FAISS_INDEX_PATH))
+with open(CHUNKS_PATH, "rb") as f:
     chunks = pickle.load(f)
-modelo = SentenceTransformer("all-MiniLM-L6-v2")
-print("Sistema listo.")
+modelo = SentenceTransformer(EMBEDDING_MODEL)
 
-class Pregunta(BaseModel):
-    texto: str
+# ── MODELOS ──────────────────────────────────────────────────────
+class PreguntaRequest(BaseModel):
+    pregunta: str
+    top_k: int = 4
 
-def buscar_chunks(pregunta, top_k=3):
-    vector = modelo.encode([pregunta])
-    distancias, indices = indice.search(np.array(vector), top_k)
-    return [chunks[i] for i in indices[0]]
+class FuenteResponse(BaseModel):
+    chunk_id: int
+    pagina: int
+    preview: str
+    score: float
 
-def responder(pregunta, chunks_relevantes):
-    cliente = Groq(api_key=os.getenv("GROQ_API_KEY"))
-    contexto = "\n\n".join(chunks_relevantes)
-    respuesta = cliente.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[
-            {
-                "role": "system",
-                "content": "Sos un asistente del reglamento académico del Instituto Tecnológico Beltrán. Respondé solo basándote en el contexto proporcionado. Si la respuesta no está en el contexto, decilo claramente. Respondé en español, de forma clara y amigable para estudiantes."
-            },
-            {
-                "role": "user",
-                "content": f"Contexto del reglamento:\n{contexto}\n\nPregunta: {pregunta}"
-            }
-        ]
+class RespuestaResponse(BaseModel):
+    respuesta: str
+    fuentes: list[FuenteResponse]
+
+# ── ENDPOINTS ────────────────────────────────────────────────────
+@app.get("/health")
+def health():
+    return {"status": "ok", "chunks_indexados": len(chunks)}
+
+@app.post("/query", response_model=RespuestaResponse)
+def query(request: PreguntaRequest):
+    chunks_relevantes = buscar_chunks(
+        request.pregunta, indice, chunks, modelo, top_k=request.top_k
     )
-    return respuesta.choices[0].message.content
 
-@app.get("/")
-def inicio():
-    return {"mensaje": "API del Reglamento Instituto Tecnológico Beltrán funcionando"}
+    if not chunks_relevantes:
+        return RespuestaResponse(
+            respuesta="No encontré fragmentos relevantes para tu pregunta.",
+            fuentes=[]
+        )
 
-@app.post("/preguntar")
-def preguntar(pregunta: Pregunta):
-    chunks_relevantes = buscar_chunks(pregunta.texto)
-    respuesta = responder(pregunta.texto, chunks_relevantes)
-    return {"respuesta": respuesta}
+    respuesta = responder(request.pregunta, chunks_relevantes, [])
+
+    fuentes = [
+        FuenteResponse(
+            chunk_id=c["chunk_id"],
+            pagina=c["pagina"],
+            preview=c["preview"],
+            score=round(c["score"], 4)
+        )
+        for c in chunks_relevantes
+    ]
+
+    return RespuestaResponse(respuesta=respuesta, fuentes=fuentes)

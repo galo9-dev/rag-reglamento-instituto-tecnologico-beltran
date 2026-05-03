@@ -29,6 +29,22 @@ Usuario → Pregunta → Embedding (MiniLM) → FAISS (coseno) → Top-K chunks
 - ✅ Historial de conversación con memoria contextual
 - ✅ Filtro de calidad mínima (descarta chunks irrelevantes)
 
+## 🔌 API REST
+
+El proyecto expone el RAG como servicio REST con FastAPI, permitiendo que otros proyectos
+se comuniquen con él sin necesidad de usar la interfaz Streamlit.
+
+```bash
+uvicorn api:app --reload
+```
+
+Documentación interactiva en `http://localhost:8000/docs`
+
+**Endpoints disponibles:**
+
+- `GET /health` — verifica que el servicio esté activo y retorna la cantidad de chunks indexados
+- `POST /query` — recibe una pregunta y retorna la respuesta con las fuentes consultadas
+
 ## 🧠 Mejoras pendientes / roadmap
 
 - [ ] Re-ranking con cross-encoder

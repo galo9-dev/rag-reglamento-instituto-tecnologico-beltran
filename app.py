@@ -3,6 +3,7 @@ import streamlit as st
 import faiss
 import numpy as np
 import pickle
+from historial import guardar_consulta
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -130,3 +131,6 @@ if pregunta:
         "contenido": respuesta,
         "chunks": chunks_relevantes
     })
+
+    # Guardar en historial_preguntas.json
+    guardar_consulta(pregunta, respuesta, origen="app.py")

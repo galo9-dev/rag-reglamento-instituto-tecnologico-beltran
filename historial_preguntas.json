@@ -1,0 +1,64 @@
+{
+  "consultas": [
+    {
+      "id": 1,
+      "fecha": "2026-06-28",
+      "hora": "01:55:56",
+      "consulta_original": "hola, como hay que ir vestido al instituto?",
+      "categoria": "general",
+      "prioridad": "BAJA",
+      "respuesta": "Esta información no está en los fragmentos del reglamento que encontré. No hay menciones específicas sobre el código de vestimenta o las normas de vestimenta para los estudiantes en el Instituto Superior de Formación Técnica N° 197.",
+      "origen": "app.py"
+    },
+    {
+      "id": 2,
+      "fecha": "2026-06-28",
+      "hora": "01:56:05",
+      "consulta_original": "vestimenta del instituto",
+      "categoria": "vestimenta",
+      "prioridad": "BAJA",
+      "respuesta": "Esta información no está en los fragmentos del reglamento que encontré. No hay menciones específicas sobre el código de vestimenta o las normas de vestimenta para los estudiantes en el Instituto Superior de Formación Técnica N° 197.",
+      "origen": "app.py"
+    },
+    {
+      "id": 3,
+      "fecha": "2026-06-28",
+      "hora": "01:56:09",
+      "consulta_original": "vestimenta",
+      "categoria": "vestimenta",
+      "prioridad": "BAJA",
+      "respuesta": "No encontré fragmentos del reglamento relevantes para tu pregunta. Intentá reformularla.",
+      "origen": "app.py"
+    },
+    {
+      "id": 4,
+      "fecha": "2026-06-28",
+      "hora": "02:02:17",
+      "consulta_original": "como tengo que ir vestido",
+      "categoria": "general",
+      "prioridad": "BAJA",
+      "respuesta": "Según el reglamento del Instituto Superior de Formación Técnica N° 197, en la página 10, se establece que los alumnos deben asistir a clases y a toda otra actividad académica \"vestidos en forma decorosa, evitando el uso de ropa no apropiada para el medio académico\". \n\nEn particular, se menciona que no está permitido el uso de:\n\n* Ojotas playeras\n* Bermudas y/o pantalón corto\n* Gorras\n* Sombreros\n* Anteojos de sol\n* Indumentaria de equipos deportivos\n\nAdemás, se establece que los alumnos deben concurrir a los exámenes finales con \"vestimenta formal y adecuada al ejercicio profesional específico\". \n\nEn resumen, debes ir vestido de manera decorosa y formal, evitando ropa inapropiada para el medio académico.",
+      "origen": "app.py"
+    },
+    {
+      "id": 5,
+      "fecha": "2026-06-28",
+      "hora": "02:02:53",
+      "consulta_original": "examenes",
+      "categoria": "examenes",
+      "prioridad": "MEDIA",
+      "respuesta": "Según el reglamento del Instituto Superior de Formación Técnica N° 197, en la página 6, se establece que la acreditación de las unidades curriculares podrá resolverse con examen final o sin examen final.\n\n**Acreditación con examen final:**\n\n* Se requiere integrar la nómina de alumnos inscriptos para el rendido del examen final, habiendo realizado la inscripción correspondiente en los plazos estipulados por el Calendario Académico y cumpliendo con los requisitos que se detallan en el apartado de Inscripción a exámenes finales.\n* Se requiere presentarse a la instancia de rendido de final con la libreta estudiantil.\n* La evaluación final será calificada por escala numérica de uno (1) a diez (10) puntos. La nota de aprobación será de cuatro (4) o más puntos sin centésimos.\n* La evaluación final libre tendrá una instancia escrita y una oral. Se deberá aprobar la instancia escrita para acceder a la oral.\n\n**Acreditación sin examen final:**\n\n* Se requiere obtener un promedio final de calificación de siete (7) o más puntos en la cursada.\n* Los estudiantes que no alcancen en la cursada la calificación estipulada precedentemente y obtuvieran cuatro (4) puntos como mínimo pasarán automáticamente al sistema de acreditación con examen final.\n\n**Inscripción a exámenes finales:**\n\n* Se requiere aprobación de las unidades curriculares determinadas como correlativas en el plan de estudios.\n* Se requiere haber presentado el Certificado Analítico de estudios de Nivel Medio.\n* Se requiere contar con la cursada aprobada y vigente (para cursada regular).\n\nEs importante mencionar que los alumnos podrán rendir hasta tres (3) veces una materia en examen final libre, de no acreditar la materia y alcanzar el máximo de instancias posibles, deberán cursarla. (Página 7)",
+      "origen": "app.py"
+    },
+    {
+      "id": 6,
+      "fecha": "2026-06-28",
+      "hora": "02:03:22",
+      "consulta_original": "como me anoto a los examanes?",
+      "categoria": "general",
+      "prioridad": "BAJA",
+      "respuesta": "Según el reglamento del Instituto Superior de Formación Técnica N° 197, en la página 7, se establece que para inscribirse a exámenes finales, debes cumplir con los siguientes requisitos:\n\n* Aprobación de las unidades curriculares determinadas como correlativas en el plan de estudios.\n* Haber presentado el Certificado Analítico de estudios de Nivel Medio.\n* Contar con la cursada aprobada y vigente (para cursada regular).\n\nUna vez que cumples con estos requisitos, puedes inscribirte a exámenes finales en el plazo estipulado por el Calendario Académico. No se especifica el procedimiento exacto para inscribirse, pero es probable que debas hacerlo a través de la secretaría del instituto o de una plataforma en línea.\n\nEs importante mencionar que la inscripción a exámenes finales libres de materias correspondientes a la cohorte del alumno podrá realizarse a partir del llamado de diciembre. Además, el estudiante podrá inscribirse como libre hasta en un 30% de las unidades curriculares con formato materia habilitadas para tal modalidad, establecidas por año en el diseño curricular.",
+      "origen": "app.py"
+    }
+  ]
+}

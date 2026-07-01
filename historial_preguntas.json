@@ -59,6 +59,56 @@
       "prioridad": "BAJA",
       "respuesta": "Según el reglamento del Instituto Superior de Formación Técnica N° 197, en la página 7, se establece que para inscribirse a exámenes finales, debes cumplir con los siguientes requisitos:\n\n* Aprobación de las unidades curriculares determinadas como correlativas en el plan de estudios.\n* Haber presentado el Certificado Analítico de estudios de Nivel Medio.\n* Contar con la cursada aprobada y vigente (para cursada regular).\n\nUna vez que cumples con estos requisitos, puedes inscribirte a exámenes finales en el plazo estipulado por el Calendario Académico. No se especifica el procedimiento exacto para inscribirse, pero es probable que debas hacerlo a través de la secretaría del instituto o de una plataforma en línea.\n\nEs importante mencionar que la inscripción a exámenes finales libres de materias correspondientes a la cohorte del alumno podrá realizarse a partir del llamado de diciembre. Además, el estudiante podrá inscribirse como libre hasta en un 30% de las unidades curriculares con formato materia habilitadas para tal modalidad, establecidas por año en el diseño curricular.",
       "origen": "app.py"
+    },
+    {
+      "id": 7,
+      "fecha": "2026-06-29",
+      "hora": "18:32:33",
+      "consulta_original": "como tengo que ir vestida?",
+      "categoria": "general",
+      "prioridad": "BAJA",
+      "respuesta": "Esta información no está en los fragmentos del reglamento que encontré. No hay menciones específicas sobre el código de vestimenta o cómo debes ir vestida en el instituto. Es posible que esta información se encuentre en otro documento o se comunique de manera separada por la institución.",
+      "origen": "app.py"
+    },
+    {
+      "id": 8,
+      "fecha": "2026-06-29",
+      "hora": "18:32:45",
+      "consulta_original": "como tengo que ir vestida",
+      "categoria": "general",
+      "prioridad": "BAJA",
+      "respuesta": "Esta información no está en los fragmentos del reglamento que encontré. No hay menciones específicas sobre el código de vestimenta o cómo debes ir vestida en el instituto. Es posible que esta información se encuentre en otro documento o que debas consultar directamente con la institución para obtener más detalles.",
+      "origen": "app.py"
+    },
+    {
+      "id": 9,
+      "fecha": "2026-06-29",
+      "hora": "18:36:48",
+      "consulta_original": "como tengo que ir vestida?",
+      "categoria": "general",
+      "prioridad": "BAJA",
+      "respuesta": "Según el reglamento del Instituto Superior de Formación Técnica N° 197, en la página 10, se establece que debes asistir a clases y a toda otra actividad académica \"vestidos en forma decorosa, evitando el uso de ropa no apropiada para el medio académico\". Además, se especifica que no está permitido el uso de:\n\n* Ojotas playeras\n* Bermudas y/o pantalón corto\n* Gorras\n* Sombreros\n* Anteojos de sol\n* Indumentaria de equipos deportivos\n\nTambién se menciona que debes concurrir a los exámenes finales con \"vestimenta formal y adecuada al ejercicio profesional específico\".",
+      "origen": "app.py"
+    },
+    {
+      "id": 10,
+      "fecha": "2026-06-29",
+      "hora": "18:39:05",
+      "consulta_original": "¿Cómo tengo que ir vestida?.",
+      "categoria": "general",
+      "prioridad": "BAJA",
+      "respuesta": "Según el reglamento del Instituto Superior de Formación Técnica N° 197, en la página 10, se establece que debes asistir a clases y a toda otra actividad académica \"vestidos en forma decorosa, evitando el uso de ropa no apropiada para el medio académico\". Además, se especifica que no está permitido el uso de:\n\n* Ojotas playeras\n* Bermudas y/o pantalón corto\n* Gorras\n* Sombreros\n* Anteojos de sol\n* Indumentaria de equipos deportivos\n\nEn cuanto a los exámenes finales, se establece que debes concurrir con \"vestimenta formal y adecuada al ejercicio profesional específico\".",
+      "origen": "app.py"
+    },
+    {
+      "id": 11,
+      "fecha": "2026-06-29",
+      "hora": "18:39:26",
+      "consulta_original": "¿Cómo tengo que anotarme como alumna ahora de los exámenes?.",
+      "categoria": "general",
+      "prioridad": "BAJA",
+      "respuesta": "Según el reglamento del Instituto Superior de Formación Técnica N° 197, en la página 7, para anotarte a los exámenes finales, debes cumplir con las siguientes condiciones:\n\n* Aprobación de las unidades curriculares determinadas como correlativas en el plan de estudios.\n* Haber presentado el Certificado Analítico de estudios de Nivel Medio.\n* Contar con la cursada aprobada y vigente (para cursada regular).\n\nAdemás, debes inscribirte en los plazos estipulados por el Calendario Académico. No se especifican detalles adicionales sobre el proceso de inscripción, por lo que es probable que debas consultar con la institución para obtener más información sobre cómo realizar la inscripción.",
+      "origen": "app.py"
     }
   ]
 }
